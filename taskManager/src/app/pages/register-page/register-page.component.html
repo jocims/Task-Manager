@@ -1,0 +1,55 @@
+<div class="centered-content">
+  <div class="white-box">
+    <img class="img-login"
+    width="200"
+    alt="Griffith Logo"
+    src="../assets/img/griffith-logo.png"
+  />
+  <br />
+    <h1 class="title has-text-primary has-text-centered">Register</h1>
+    <h2 class="subtitle has-text-grey has-text-centered">Your College Task Manager</h2>
+    <div class="field">
+      <p class="control has-icons-left has-icons-right">
+        <input #nameInput class="input has-background-light" type="text" placeholder="First Name">
+        <span class="icon is-small is-left">
+          <i class="fas fa-user"></i>
+        </span>
+      </p>
+    </div>
+    <div class="field">
+      <p class="control has-icons-left has-icons-right">
+        <input #surnameInput class="input has-background-light" type="text" placeholder="Surname">
+        <span class="icon is-small is-left">
+          <i class="fas fa-user"></i>
+        </span>
+      </p>
+    </div>
+    <div class="field">
+      <p class="control has-icons-left has-icons-right">
+        <input #emailInput class="input has-background-light" type="email" placeholder="Email">
+        <span class="icon is-small is-left">
+          <i class="fas fa-envelope"></i>
+        </span>
+      </p>
+    </div>
+    <div class="field">
+      <p class="control has-icons-left">
+        <input #pwInput class="input has-background-light" type="password" placeholder="Password">
+        <span class="icon is-small is-left">
+          <i class="fas fa-lock"></i>
+        </span>
+      </p>
+    </div>
+    <div class="field" style="display: flex; justify-content: flex-end;">
+      <p class="control">
+        <button class="button is-primary has-text-white" (click)="onSignupButtonClicked(nameInput.value,surnameInput.value, emailInput.value, pwInput.value)">
+         Register
+        </button>
+      </p>
+    </div>
+    <br>
+
+    <p class="has-text-grey has-text-centered">Have you got an account? <a routerLink="/login">Login</a> now!</p>
+
+  </div>
+</div>

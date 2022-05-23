@@ -1,0 +1,53 @@
+<div class="centered-content">
+  <div class="white-box">
+    <img class="img-login"
+    width="200"
+    alt="Griffith Logo"
+    src="../assets/img/griffith-logo.png"
+  />
+  <br />
+    <h1 class="title has-text-primary has-text-centered">Login</h1>
+    <h2 class="subtitle has-text-grey has-text-centered">Your College Task Manager</h2>
+  
+    <form [formGroup]="formData" (ngSubmit)="doLogin(formData.value)"  class="form-signin">
+      <div class="field">
+        <p class="control has-icons-left has-icons-right">
+          <input #emailInput class="input  has-background-light" type="email" placeholder="Email" formControlName="email" required autofocus>
+          <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
+        </p>
+      </div>
+      <div class="field">
+        <p class="control has-icons-left">
+          <input #pwInput class="input has-background-light" type="password" placeholder="Password" formControlName="password"  required>
+          <span class="icon is-small is-left">
+            <i class="fas fa-lock"></i>
+          </span>
+        </p>
+      </div>
+      <div *ngIf="false">
+        Password must be at least 6 characters
+      </div>
+      <div class="field" style="display: flex; justify-content: flex-end;">
+        <p class="control">
+          <button class="button is-primary has-text-white"  type="submit">
+            Login
+          </button>
+        </p>
+        
+      </div>
+      <div *ngIf="formData.errors?.unauthenticated">
+        Username or Password incorrect!
+      </div>
+    </form>
+    
+    
+   
+
+    <br>
+
+    <p class="has-text-grey has-text-centered" >Have you got an account? <a routerLink="/register">Register</a> now!</p>
+
+  </div>
+</div>

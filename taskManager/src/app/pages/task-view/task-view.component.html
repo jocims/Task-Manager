@@ -1,0 +1,85 @@
+<div class="centered-content">
+  <div class="task-manager-container">
+
+    <div class="sidebar has-background-white">
+      
+      <h1 class="title has-text-primary">
+        To-Do Folders
+      </h1>
+
+      <div class="list-menu">
+        <a class="list-menu-item has-background-danger-light" *ngFor="let tasks of tasks" [routerLink]="['/tasks', tasks._id]" routerLinkActive="is-active">
+          <p class="">{{ tasks.title }}</p>
+        </a>
+
+      </div>
+
+      <button class="button is-primary has-text-white" routerLink="/new-tasks">+ New Folder</button>
+
+    </div>
+
+    <div class="task-list-container has-background-light">
+      <div *ngIf="tasks">
+        <div class="top-bar">
+          <h1 class="title has-text-primary">
+            Tasks
+          </h1>
+          <div class="dropdown is-hoverable is-right">
+            <div class="dropdown-trigger">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+                <span class="icon is-small">
+                  <i class="fas fa-cog" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+              <div class="dropdown-content">
+                <a [routerLink]="['/edit-task', selectedTasksId]" class="dropdown-item">
+                  Edit Folder
+                </a>
+                <a (click)="onDeleteTasksClick()" class="dropdown-item has-text-danger">
+                  Delete Folder
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Task Elements -->
+        <div class="task" *ngFor="let task of task" (click)="onTaskClick(task)" [ngClass]="{ 'completed': task.completed }">
+          <div class="task-text is-inline">
+            <p class="title ">{{ task.title }}</p>
+          
+            <p class="subtitle is-size-6">Date: {{ task.deadline }}</p>
+            <p class="subtitle is-size-6 mb-0">Assigned to: {{ task.student }}</p>
+            <p class="subtitle is-size-6" *ngIf="task.completed">Completed!</p>
+         </div>
+          
+          
+          <div class="task-buttons">
+
+            <button class="button" [routerLink]="['/tasks', selectedTasksId, 'edit-task', task._id]">
+              Edit
+            </button>
+            <button class="button is-danger" (click)="onDeleteTaskClick(task._id)" style="margin-left: 10px;">
+              Delete
+            </button>
+          </div>
+        </div>
+
+        <h3 class="empty-state-text" *ngIf="tasks.length === 0">There are no tasks here! Click the add button to create
+          a new task.</h3>
+
+        <button routerLink="./new-task" class="circle-add-button button is-primary">
+          <img src="../../../assets/plus-icon.svg" class="has-text-white">
+        </button>
+      </div>
+
+      <div *ngIf="!tasks">
+        <h3 class="empty-state-text">You have no tasks available, create a new one!</h3>
+      </div>
+
+    </div>
+
+  </div>
+</div>
